@@ -241,6 +241,68 @@ FLUSHDB
 
 ---
 
+## Docker
+
+All three engines ship as a single image. Data is persisted in named Docker volumes so it survives container restarts.
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) 20.10+
+- [Docker Compose](https://docs.docker.com/compose/) v2
+
+### Build
+
+```bash
+docker build -t pyforge-db .
+# or via Compose (builds all services)
+docker compose build
+```
+
+### Run each engine
+
+**Forge** — interactive SQL REPL:
+```bash
+docker compose run --rm forge
+```
+
+**Strata** — interactive CQL REPL (single node):
+```bash
+docker compose run --rm strata
+```
+
+**Strata** — 3-node in-process cluster:
+```bash
+docker compose run --rm strata \
+  python3 -m strata --cluster n1,n2,n3 --rf 3 --consistency QUORUM
+```
+
+**Volt** — TCP server on port 6399:
+```bash
+docker compose up volt
+
+# connect from host (requires redis-cli)
+redis-cli -p 6399
+```
+
+### Volumes
+
+| Volume | Engine | Contents |
+|--------|--------|----------|
+| `forge_data` | Forge | Heap pages, WAL, B+ tree index files |
+| `strata_data` | Strata | SSTables, commit log, compaction state |
+| `volt_data` | Volt | AOF persistence file |
+
+### Compose services at a glance
+
+```yaml
+services:
+  forge   # python3 -m forge /data/forge          (interactive)
+  strata  # python3 -m strata --data /data/strata  (interactive)
+  volt    # python3 -m volt --server 0.0.0.0:6399  (daemon, port exposed)
+```
+
+---
+
 ## Tests
 
 ```bash
