@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Tests
+forge/tests/
+strata/tests/
+volt/tests/
+
+# Runtime data
+*.log
+*.idx
+*.db
+/data/
+/tmp/
+*_data/
+
+# Env
+.env
+.venv/
+venv/
