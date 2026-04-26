@@ -47,9 +47,9 @@ python3 -m forge ./my_data_dir      # custom data directory
 
 ### Screenshots
 
-![Forge REPL — DDL, DML, aggregates](images/Screenshot%202026-04-25%20at%203.30.11%20PM.png)
+![Forge REPL — DDL, DML, aggregates](images/forge-repl-queries.png)
 
-![Forge REPL — DELETE, transactions, ROLLBACK, meta-commands](images/Screenshot%202026-04-25%20at%203.30.20%20PM.png)
+![Forge REPL — DELETE, transactions, ROLLBACK, meta-commands](images/forge-repl-transactions.png)
 
 ### Example queries
 
@@ -119,9 +119,9 @@ python3 -m strata --cluster n1,n2,n3 --rf 3 --consistency QUORUM
 
 ### Screenshots
 
-![Strata single-node — keyspace, table, CRUD, DESCRIBE](images/Screenshot%202026-04-25%20at%209.13.34%20PM.png)
+![Strata single-node — keyspace, table, CRUD, DESCRIBE](images/strata-single-node.png)
 
-![Strata 3-node cluster — QUORUM consistency, cluster status](images/Screenshot%202026-04-25%20at%209.13.59%20PM.png)
+![Strata 3-node cluster — QUORUM consistency, cluster status](images/strata-cluster.png)
 
 ### Example queries
 
@@ -203,9 +203,9 @@ redis-cli -p 6399
 
 ### Screenshots
 
-![Volt shell — strings, INCR, APPEND, PING, INFO, KEYS](images/Screenshot%202026-04-25%20at%209.36.53%20PM.png)
+![Volt shell — strings, INCR, APPEND, PING, INFO, KEYS](images/volt-shell.png)
 
-![Volt TCP server — listening on port 6399](images/Screenshot%202026-04-25%20at%209.37.09%20PM.png)
+![Volt TCP server — listening on port 6399](images/volt-server.png)
 
 ### Example commands
 

@@ -1,0 +1,11 @@
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/tests/
+images/
+README.md
+.git/
+.gitignore
+*.log
+*.idx
+*_data/

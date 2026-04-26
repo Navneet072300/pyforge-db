@@ -56,7 +56,7 @@ def format_table(result: QueryResult) -> str:
 
 BANNER = textwrap.dedent("""\
     ┌─────────────────────────────────────────────┐
-    │     PyDB Phase-1 — PostgreSQL-like engine    │
+    │       Forge — PostgreSQL-like engine         │
     │  Type \\q or Ctrl-D to quit, \\h for help     │
     └─────────────────────────────────────────────┘
 """)

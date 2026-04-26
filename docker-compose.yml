@@ -1,0 +1,50 @@
+services:
+
+  # Forge — PostgreSQL-like relational engine
+  # Usage: docker compose run --rm forge
+  forge:
+    build: .
+    command: ["python3", "-m", "forge", "/data/forge"]
+    volumes:
+      - forge_data:/data/forge
+    stdin_open: true
+    tty: true
+
+  # Strata — Cassandra-like wide-column engine
+  # Usage: docker compose run --rm strata
+  # Cluster mode: docker compose run --rm strata python3 -m strata --cluster n1,n2,n3 --rf 3 --consistency QUORUM
+  strata:
+    build: .
+    command: ["python3", "-m", "strata", "--data", "/data/strata"]
+    volumes:
+      - strata_data:/data/strata
+    stdin_open: true
+    tty: true
+
+  # Volt — Redis-like in-memory store (TCP server on port 6399)
+  # Usage: docker compose up volt
+  # Connect: redis-cli -p 6399
+  volt:
+    build: .
+    command:
+      - python3
+      - -m
+      - volt
+      - --server
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "6399"
+      - --aof
+      - /data/volt/volt.aof
+      - --fsync
+      - everysec
+    ports:
+      - "6399:6399"
+    volumes:
+      - volt_data:/data/volt
+
+volumes:
+  forge_data:
+  strata_data:
+  volt_data:
